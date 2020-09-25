@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/*
 struct Constants {
     
     static var API_KEY = ""
@@ -16,3 +16,4 @@ struct Constants {
     
 }
  
+*/
