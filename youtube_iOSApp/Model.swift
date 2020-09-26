@@ -4,10 +4,16 @@
 //
 //  Created by Роман Юн on 23.09.2020.
 //
+protocol ModelDelegate {
+    func videosFetched(_ videos:[Video])
+}
+
 
 import Foundation
 
 class Model {
+    
+    var delegate:ModelDelegate?
  
     func getVideos() {
         
@@ -36,7 +42,15 @@ class Model {
                 
                 let response = try decoder.decode(Response.self, from: data!)
                 
-                dump(response)
+                if response.items != nil {
+                    
+                    DispatchQueue.main.async {
+                        self.delegate?.videosFetched(response.items!)
+                    }
+                    
+                }
+                
+//                dump(response)
                 
                 
             } catch {
